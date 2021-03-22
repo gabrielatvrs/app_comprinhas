@@ -17,19 +17,20 @@ class ListaAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val itemCompra: TextView = view.findViewById(R.id.txtItem)
         val qtdCompra: TextView = view.findViewById(R.id.txtQtd)
+        val unidade: TextView = view.findViewById(R.id.txtUni)
         val excluirItem: ImageView = view.findViewById(R.id.btnExcluir)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_lista, parent, false)
-
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemCompra.text = listaCompras[position].nome
-        holder.qtdCompra.text = "${listaCompras[position].qtd}x"
+        holder.qtdCompra.text = listaCompras[position].qtd.toString()
+        holder.unidade.text = listaCompras[position].unidade
         holder.excluirItem.setOnClickListener {
 
             AlertDialog.Builder(it.context)
@@ -41,7 +42,6 @@ class ListaAdapter(
                 }
                 .setNegativeButton("Não") { dialog, which -> }
                 .show()
-
         }
     }
 

@@ -25,5 +25,4 @@ class ListaActivity : AppCompatActivity() {
         rvListaCompras.layoutManager = LinearLayoutManager(this)
 
     }
-
 }
